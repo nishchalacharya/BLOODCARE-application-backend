@@ -3,7 +3,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 #custom user model
 class UserManager(BaseUserManager):
-    def create_user(self, name, email, date_of_birth, phone_number, bloodgroup, province_number, address, issue, password=None):
+    def create_user(self, name, email, date_of_birth, phone_number, bloodgroup, province_number, address, issue, password=None,**extra_fields):
         """
         Creates and saves a User with the given  name, email, date_of_birth,phone_number, bloodgroup, province_number, address, issue,
         """
@@ -18,7 +18,8 @@ class UserManager(BaseUserManager):
             bloodgroup=bloodgroup,
             province_number=province_number,
             address=address,
-            issue=issue
+            issue=issue,
+            **extra_fields
        
 
         )
@@ -31,7 +32,7 @@ class UserManager(BaseUserManager):
         
     
 
-    def create_superuser(self, name, email, date_of_birth, phone_number, bloodgroup, province_number, address, issue, password=None):
+    def create_superuser(self, name, email, date_of_birth, phone_number, bloodgroup, province_number, address, issue, password=None,**extra_fields):
         """
         Creates and saves a superuser with the given name, email, date_of_birth, phone_number,
         bloodgroup, province_number, address, issue,and password.
@@ -46,11 +47,13 @@ class UserManager(BaseUserManager):
             bloodgroup=bloodgroup,
             province_number=province_number,
             address=address,
-            issue=issue
+            issue=issue,
+            **extra_fields
            
         )
         
         user.is_admin = True
+        user.is_verified = True
         user.save(using=self._db)
         return user
 
@@ -68,6 +71,7 @@ class User(AbstractBaseUser):
     issue = models.CharField(max_length=200)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    is_verified = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -103,5 +107,12 @@ class Document(models.Model):
    user_id=models.CharField(max_length=10,blank=True,null=True)
    name=models.CharField(max_length=100,blank=True,null=True)
    documentpic=models.ImageField(upload_to='document_pictures')
-   isverified=models.BooleanField(default=False)
+   is_verified=models.BooleanField(default=False)
+
+class ProfileDocument(models.Model):
+     user_id=models.CharField(max_length=10)
+     name=models.CharField(max_length=100)
+     profilepic=models.ImageField(upload_to='document_pictures')
+    
+
     

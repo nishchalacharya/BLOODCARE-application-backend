@@ -2,17 +2,16 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from .serializers import UserSerializer,DocumentSerializer ,UserRegistrationSerializer,UserLoginSerializer, UserProfileSerializer, UserChangePasswordSerializer, SendPasswordResetEmailSerializer,UserPasswordResetViewSerializer
+from .serializers import UserSerializer,ProfileDocumentSerializer,DocumentSerializer ,UserRegistrationSerializer,UserLoginSerializer, UserProfileSerializer, UserChangePasswordSerializer, SendPasswordResetEmailSerializer,UserPasswordResetViewSerializer
 from django.contrib.auth import authenticate
 from .renderers import UserRenderer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import generics
-from .models import User,Document
+from .models import User,Document,ProfileDocument
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework import viewsets
 from rest_framework.decorators import api_view,authentication_classes,permission_classes
-
 
 
 
@@ -85,9 +84,9 @@ class UserProfileView(APIView):
             serializer.save()
             return Response({'data':serializer.data},status=status.HTTP_200_OK)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-
+  
     
-    
+       
 class UserChangePasswordView(APIView):
     # renderer_classes = [UserRenderer]
     permission_classes = [IsAuthenticated]
@@ -114,6 +113,8 @@ class UserPasswordResetView(APIView):
         return Response({'msg':'Password Reset Successfully'},
             status=status.HTTP_200_OK)
        
+       
+
 
 
 # class DocumentView(viewsets.ModelViewSet):
@@ -147,7 +148,7 @@ def upload_document(request):
         user_id=user_id,
         name=user_name,  # Assuming you want to use the user's username as the document name
         documentpic=documentpic,
-        isverified=False  # Set to False by default
+        is_verified=False  # Set to False by default
     )
     
     return Response({'message': 'Document uploaded successfully'})
@@ -167,6 +168,51 @@ def upload_document(request):
  else:
         return Response({'error': 'Method not allowed'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
     #  ----------------------------------------------
+ 
+
+@api_view(['POST','GET'])
+@authentication_classes([JWTAuthentication])
+@permission_classes([IsAuthenticated])
+def upload_profiledocument(request):
+ if request.method=='POST'  :
+    # Extract user-related information from the request or JWT token
+
+    user_name = request.user.name
+    user_id=request.user.id
+   
+
+    # Get the uploaded image file from the request data
+    profilepic = request.data.get('profilepic')
+
+    if not profilepic:
+        return Response({'error': 'No Profile pic data provided'}, status=status.HTTP_400_BAD_REQUEST)
+    
+    # Create a Document instance with the uploaded file
+    Profilepicture = ProfileDocument.objects.create(
+        user_id=user_id,
+        name=user_name,  # Assuming you want to use the user's username as the document name
+        profilepic=profilepic,
+     
+     )
+    
+    return Response({'message': 'Document uploaded successfully'})
+ 
+ elif  request.method == 'GET':
+      
+        # Handling GET request to retrieve user data
+        try:
+            # Retrieve the user based on the provided pk (user_id)
+            user = ProfileDocument.objects.get(user_id=request.user.id)
+        except User.DoesNotExist:
+            return Response({'error': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+        
+        # Serialize the user data
+        serializer = ProfileDocumentSerializer(user)
+        return Response(serializer.data)
+ else:
+        return Response({'error': 'Method not allowed'}, status=status.HTTP_405_METHOD_NOT_ALLOWED) 
+
+
 
 
 

@@ -1,10 +1,11 @@
 from rest_framework import serializers
-from .models import User,Document
+from .models import User
 from xml.dom import ValidationErr
 from django.utils.encoding import smart_str, force_bytes,DjangoUnicodeDecodeError
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from .utils import Util
+from .models import User,Document,ProfileDocument
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
@@ -35,7 +36,7 @@ class UserSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id','name','email','date_of_birth','phone_number','bloodgroup','province_number','address','issue']
+        fields = ['id','name','email','date_of_birth','phone_number','bloodgroup','province_number','address','issue','is_verified']
         
         
 class UserChangePasswordSerializer(serializers.Serializer):
@@ -67,6 +68,7 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
             print('Password Reset Token', token)
             link = 'http://localhost:3000/api/user/reset/'+uid+'/'+token
             print('Password Reset Link', link)
+    
             #Send Email
             body = 'Click Following Link to Reset Your Password' +link
             data = {
@@ -74,7 +76,7 @@ class SendPasswordResetEmailSerializer(serializers.Serializer):
                 'body':body,
                 'to_email':user.email
             }
-            #Util.send_email(data)
+            Util.send_email(data)
             return attrs
         else:
             raise ValidationErr('You are not a Registered User')
@@ -100,10 +102,21 @@ class UserPasswordResetViewSerializer(serializers.Serializer):
             PasswordResetTokenGenerator().check_token(user,token)
             raise serializers.ValidationError('Token is not Valid or Expired')
         
+        
+        
+        
+
+        
+    
 
 class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Document
+        model= Document
+        fields='__all__'
+
+class ProfileDocumentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model= ProfileDocument
         fields='__all__'
         
     

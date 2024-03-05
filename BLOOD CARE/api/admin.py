@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User,Document
+from .models import User,Document,ProfileDocument
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 class UserModelAdmin(BaseUserAdmin):
@@ -7,12 +7,12 @@ class UserModelAdmin(BaseUserAdmin):
   # These override the definitions on the base UserModelAdmin
   # that reference specific fields on auth.User.
   
-  list_display = ('id','name','email','date_of_birth','phone_number','bloodgroup','province_number','address','issue','is_admin','is_active')
-  list_filter = ('is_admin','is_active',)
+  list_display = ('id','name','email','date_of_birth','phone_number','bloodgroup','province_number','address','issue','is_admin','is_active','is_verified')
+  list_filter = ('is_admin','is_active','is_verified',)
   fieldsets = (
       ('User Credentials', {'fields': ('phone_number', 'password')}),
       ('Personal info', {'fields': ('name', 'email', 'date_of_birth','bloodgroup','province_number','address','issue')}),
-      ('Permissions', {'fields': ('is_admin','is_active',)}),
+      ('Permissions', {'fields': ('is_admin','is_active','is_verified',)}),
  
   )
   # add_fieldsets is not a standard ModelAdmin attribute. UserModelAdmin
@@ -34,7 +34,7 @@ admin.site.register(User, UserModelAdmin)
 
 # @admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
-     list_display=['user_id','name','isverified']
+     list_display=['user_id','name','is_verified']
 
     #  def user_phoneno(self,obj):
     #      return obj.user.phone_number
@@ -44,3 +44,9 @@ class DocumentAdmin(admin.ModelAdmin):
      
 
 admin.site.register(Document, DocumentAdmin)     
+
+
+class ProfileAdmin(admin.ModelAdmin):
+     list_display=['user_id','name']
+
+admin.site.register(ProfileDocument, ProfileAdmin) 
