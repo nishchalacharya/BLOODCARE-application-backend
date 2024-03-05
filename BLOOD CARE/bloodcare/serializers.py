@@ -4,7 +4,7 @@ from .models import *
 class RequestSerializer(serializers.ModelSerializer):
    class Meta:
       model = requestdetails
-      fields= ['id','pat_name','contact_person','bloodgroup','hospital','req_date','prov_no','district','case_details','phoneno','reqpint','case_details']
+      fields= ['user_id','user_name','id','pat_name','contact_person','bloodgroup','hospital','req_date','prov_no','district','case_details','phoneno','reqpint','case_details']
 
 
 class DonorSerializer(serializers.ModelSerializer):

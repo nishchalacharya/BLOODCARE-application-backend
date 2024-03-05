@@ -1,8 +1,11 @@
 from django.db import models
+from api.models import User
 
 # Create your models here.
 
 class donordetails(models.Model):
+    user_id=models.CharField(max_length=10)
+    user_name=models.CharField(max_length=100)
     name = models.CharField( max_length=50)
     prov_no = models.CharField( max_length=30)
     district = models.CharField( max_length=50)
@@ -22,6 +25,9 @@ class donordetails(models.Model):
 
 
 class requestdetails (models.Model):
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_id=models.CharField(max_length=10)
+    user_name=models.CharField(max_length=100)
     pat_name = models.CharField( max_length=50)
     contact_person = models.CharField(max_length=50)
     bloodgroup = models.CharField(max_length=10)

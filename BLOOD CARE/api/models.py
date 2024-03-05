@@ -69,11 +69,13 @@ class User(AbstractBaseUser):
     province_number = models.IntegerField()
     address = models.CharField(max_length=200)
     issue = models.CharField(max_length=200)
+    password_reset_otp_secret = models.CharField(max_length=255, blank=True, null=True)
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_verified = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
     
 
    
@@ -110,6 +112,7 @@ class Document(models.Model):
    is_verified=models.BooleanField(default=False)
 
 class ProfileDocument(models.Model):
+    #  registereduser=models.OneToOneField(User,on_delete=models.CASCADE)
      user_id=models.CharField(max_length=10)
      name=models.CharField(max_length=100)
      profilepic=models.ImageField(upload_to='document_pictures')

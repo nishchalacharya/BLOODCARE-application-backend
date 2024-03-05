@@ -187,6 +187,12 @@ CORS_ALLOWED_ORIGINS = [
 
 # APPEND_SLASH=False
 
+import os
+# Define the base directory of your project
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Define the path to the default profile picture
+DEFAULT_PROFILE_PIC_PATH = os.path.join(BASE_DIR, 'static', 'default_profile_pic.jpg')
 
 
 

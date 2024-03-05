@@ -7,9 +7,11 @@ class DonorDetailsAdmin(admin.ModelAdmin):
     list_display=['name','prov_no','district','city','dob','gender','phoneno']
 
 
-@admin.register(requestdetails)
-class RequestDetails(admin.ModelAdmin):
-     list_display=['pat_name','contact_person','bloodgroup','district','hospital','req_date']
+# @admin.register(requestdetails)
+class RequestDetailsAdmin(admin.ModelAdmin):
+     list_display = ['user_id','user_name','pat_name','contact_person','bloodgroup','district','hospital','req_date']
+admin.site.register(requestdetails,RequestDetailsAdmin)
+
 
 
 admin.site.register(reward)

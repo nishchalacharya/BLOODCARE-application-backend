@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.views import APIView
-from .serializers import UserSerializer,ProfileDocumentSerializer,DocumentSerializer ,UserRegistrationSerializer,UserLoginSerializer, UserProfileSerializer, UserChangePasswordSerializer, SendPasswordResetEmailSerializer,UserPasswordResetViewSerializer
+from .serializers import UserSerializer,ProfileDocumentSerializer,DocumentSerializer ,UserRegistrationSerializer,UserLoginSerializer, UserProfileSerializer, UserChangePasswordSerializer
 from django.contrib.auth import authenticate
 from .renderers import UserRenderer
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -12,6 +12,14 @@ from .models import User,Document,ProfileDocument
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework import viewsets
 from rest_framework.decorators import api_view,authentication_classes,permission_classes
+from django.conf import settings
+
+import pyotp
+from django.shortcuts import get_object_or_404
+from django.core.mail import send_mail
+from django.conf import settings
+
+
 
 
 
@@ -95,35 +103,90 @@ class UserChangePasswordView(APIView):
         context={'user':request.user})
         serializer.is_valid(raise_exception=True)
         return Response({'msg':'Password Changed Successfully'}, status=status.HTTP_200_OK)
-        
-    
-            
-class SendPasswordResetEmailView(APIView):
-    def post(self,request,format=None):
-        serializer = SendPasswordResetEmailSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        return Response({'msg':'Password Reset link send. Please Check your Email'},status=status.HTTP_200_OK)
+
+
+class SendPasswordResetOTPView(APIView):
+    def post(self, request, format=None):
+        email = request.data.get('email')
+
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return Response({'detail': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        # Generate a one-time password (OTP)
+        otp_secret_key = pyotp.random_base32()
+        otp = pyotp.TOTP(otp_secret_key, interval=180)
+        # otp = pyotp.TOTP(otp_secret_key)
+        user.password_reset_otp_secret = otp_secret_key
+        user.save()
+
+        generated_otp = otp.now()
+        print("Generated OTP:", generated_otp)
+
+        # Send the OTP via email
+        subject = 'Password Reset OTP'
+        message = f'Your OTP for password reset: {generated_otp}'
+        from_email = settings.DEFAULT_FROM_EMAIL
+        recipient_list = [email]
+
+        send_mail(subject, message, from_email, recipient_list)
+
+        return Response({'msg': 'Password reset OTP sent successfully'}, status=status.HTTP_200_OK)
+
+
+
+
+
+
+
+
+# views.py
+# views.py
+class UserPasswordResetWithOTPView(APIView):
+    def post(self, request, format=None):
+        email = request.data.get('email')
+        otp = request.data.get('otp')
+        new_password = request.data.get('new_password')
+
+        try:
+            user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            return Response({'detail': 'User not found'}, status=status.HTTP_404_NOT_FOUND)
+
+        # Validate the OTP received from the user
+        try:
+            totp = pyotp.TOTP(user.password_reset_otp_secret,interval=180)
+            generated_otp = totp.now()
+
+            # Ensure that the OTP is valid
+            if not totp.verify(otp, valid_window=2):
+                raise ValueError(f'Invalid OTP: {otp} vs {generated_otp}')
+        except ValueError as e:
+            return Response({'detail': str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Reset the password
+        user.set_password(new_password)
+        user.save()
+
+        return Response({'msg': 'Password reset successfully'}, status=status.HTTP_200_OK)
+
        
-    
-class UserPasswordResetView(APIView):
-    def post(self, request,uid,token,format=None):
-        serializer = UserPasswordResetViewSerializer(data=request.data,
-        context={'uid':uid,'token':token})
-        serializer.is_valid(raise_exception=True)
-        return Response({'msg':'Password Reset Successfully'},
-            status=status.HTTP_200_OK)
-       
-       
 
 
 
-# class DocumentView(viewsets.ModelViewSet):
-#     queryset=Document.objects.all()
-#     serializer_class=DocumentSerializer
 
 
-# import base64  
-# from django.core.files.base import ContentFile  
+
+
+
+
+
+
+
+
+
+
 
 
 @api_view(['POST','GET'])
@@ -211,9 +274,6 @@ def upload_profiledocument(request):
         return Response(serializer.data)
  else:
         return Response({'error': 'Method not allowed'}, status=status.HTTP_405_METHOD_NOT_ALLOWED) 
-
-
-
 
 
 
