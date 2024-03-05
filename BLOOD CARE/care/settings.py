@@ -15,8 +15,8 @@ SECRET_KEY = "django-insecure-yvcj@xfq%1guso!2z_l7l(&c!ub&t@8ju%(jy1=++)kj@f)4u(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.vercel.app','.now.sh','127.0.0.1','localhost']
 
 # Application definition
 
@@ -46,7 +46,7 @@ EMAIL_HOST_USER = 'blood.care77@gmail.com'
 EMAIL_HOST_PASSWORD = 'ynhb sbgh ejzq kogd'
 
  
-
+ 
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -131,6 +131,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT=BASE_DIR/'media'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
