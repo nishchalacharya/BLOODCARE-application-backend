@@ -10,7 +10,7 @@ BLOOD CARE is a user-friendly mobile application that enables real-time blood re
 
 BLOOD CARE/                   # 🌐 Backend root folder (Django project)
 ├── api/                      # Django app managing:
-│   ├── user authentication
+│   ├── user authentication(JWT)
 │   ├── user profile management (view/update)
 │   ├── password reset/forget password
 │   └── other user-related APIs
@@ -39,7 +39,7 @@ BLOOD CARE/                   # 🌐 Backend root folder (Django project)
 - 🔔 User-friendly UI for seamless interaction
 
 ### ⚙️ Backend Features (Django REST)
-- 🔐 Token-based authentication
+- 🔐 Token-based authentication (JWT)
 - 📑 CRUD APIs for user management, blood requests, hospitals
 - 🏥 Role-based permissions (Donor, Hospital, Admin)
 - 🌐 Django Admin for backend data control
