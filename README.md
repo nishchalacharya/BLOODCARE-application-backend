@@ -75,8 +75,8 @@ BLOOD CARE/                   # 🌐 Backend root folder (Django project)
 - ![Dashboard](BLOOD%20CARE/screenshots/screenshots/3.jpg)  
   **Dashboard:** Overview of user activities and quick access to main features.
 
-- ![Donors Nearby](BLOOD%20CARE/screenshots/screenshots/4.jpg)  
-  **Donors Nearby:** Shows nearby blood donors based on user location.
+- ![Donors Nearby](BLOOD%20CARE/screenshots/screenshots/5.jpg)  
+  **Donors Nearby:** Shows nearby blood donors based on user location markers seen on map.
 
 - ![Donors List](BLOOD%20CARE/screenshots/screenshots/7.jpg)  
   **Donors List:** A detailed list of blood donors filtered by blood group and city.
