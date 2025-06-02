@@ -64,15 +64,39 @@ BLOOD CARE/                   # 🌐 Backend root folder (Django project)
 
 > Add these inside a `screenshots/` folder in the repo.
 
-- ![Login](BLOOD%20CARE/screenshots/screenshots/1.png)
-- ![Signup](BLOOD%20CARE/screenshots/screenshots/2.png)
-- ![Dashboard](BLOOD%20CARE/screenshots/screenshots/3.jpg)
-- ![Donors Nearby](BLOOD%20CARE/screenshots/screenshots/5.jpg)
-- ![Donors List](BLOOD%20CARE/screenshots/screenshots/7.jpg)
-- ![Request List](BLOOD%20CARE/screenshots/screenshots/8.jpg)
-- ![Request Form](BLOOD%20CARE/screenshots/screenshots/9.jpg)
-- ![BMI Calculator](BLOOD%20CARE/screenshots/screenshots/12.jpg)
-- ![Other Features](BLOOD%20CARE/screenshots/screenshots/6.jpg)
+
+
+- ![Login](BLOOD%20CARE/screenshots/screenshots/1.png)  
+  **Login Screen:** Users can securely log into the BloodCare application.
+
+- ![Signup](BLOOD%20CARE/screenshots/screenshots/2.png)  
+  **Signup Screen:** New users can register to access the app features.
+
+- ![Dashboard](BLOOD%20CARE/screenshots/screenshots/3.png)  
+  **Dashboard:** Overview of user activities and quick access to main features.
+
+- ![Donors Nearby](BLOOD%20CARE/screenshots/screenshots/4.png)  
+  **Donors Nearby:** Shows nearby blood donors based on user location.
+
+- ![Donors List](BLOOD%20CARE/screenshots/screenshots/7.png)  
+  **Donors List:** A detailed list of blood donors filtered by blood group and city.
+
+- ![Request List](BLOOD%20CARE/screenshots/screenshots/8.png)  
+  **Request List:** Displays blood requests made by users in the community.
+
+- ![Request Form](BLOOD%20CARE/screenshots/screenshots/9.png)  
+  **Request Form:** Allows users to submit a request for blood donation.
+
+- ![BMI Calculator](BLOOD%20CARE/screenshots/screenshots/12.png)  
+  **BMI Calculator:** Calculates and displays Body Mass Index for health monitoring.
+
+- ![Other Features](BLOOD%20CARE/screenshots/screenshots/6.png)  
+  **Additional Features:** Various other helpful utilities integrated into the app.
+
+---
+
+For more detailed views and additional screenshots, please refer to the `screenshots` folder in the repository.
+
 
 
 ---
