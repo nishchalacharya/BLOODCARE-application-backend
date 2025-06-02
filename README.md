@@ -7,22 +7,22 @@ BLOOD CARE is a user-friendly mobile application that enables real-time blood re
 ## 📦 Project Structure
 
 ```
-BLOODCARE-application/
-├── BLOOD CARE/                 # 🌐 Backend root folder (Django project)
-│   ├── api/                    # Django app for REST APIs
-│   ├── users/                  # Django app for user authentication
-│   ├── blood_requests/         # App to handle blood requests
-│   ├── hospitals/              # Hospital management
-│   ├── manage.py               # Django management script
-│   └── ...                     # Other Django files
-├── bloodcare_flutter/         # 📱 Flutter frontend root folder
-│   ├── lib/
-│   │   ├── screens/            # Screens like Home, Login, Blood Request
-│   │   ├── services/           # API integration
-│   │   ├── utils/              # Reusable widgets, constants
-│   │   └── main.dart           # Flutter app entry point
-│   └── pubspec.yaml            # Flutter dependencies
-└── README.md
+
+BLOOD CARE/                   # 🌐 Backend root folder (Django project)
+├── api/                      # Django app managing:
+│   ├── user authentication
+│   ├── user profile management (view/update)
+│   ├── password reset/forget password
+│   └── other user-related APIs
+├── care/                     # Core Django project folder containing:
+│   ├── settings.py           # Project settings
+│   ├── urls.py               # URL routing
+│   ├── wsgi.py               # WSGI config
+│   └── other Django core files
+├── users/                    # Django app handling user models and related logic
+├── manage.py                 # Django management script
+├── media/                    # Folder for user-uploaded images (e.g., profile pictures,documents uplaoded for verification)
+└── static/                   # Static files such as system images used in the app
 ```
 
 
