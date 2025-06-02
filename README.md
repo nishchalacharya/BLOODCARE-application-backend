@@ -66,13 +66,13 @@ BLOOD CARE/                   # 🌐 Backend root folder (Django project)
 
 - ![Login](BLOOD%20CARE/screenshots/screenshots/1.png)
 - ![Signup](BLOOD%20CARE/screenshots/screenshots/2.png)
-- ![Dashboard](BLOOD%20CARE/screenshots/screenshots/3.png)
-- ![Donors Nearby](BLOOD%20CARE/screenshots/screenshots/4.png)
-- ![Donors List](BLOOD%20CARE/screenshots/screenshots/7.png)
-- ![Request List](BLOOD%20CARE/screenshots/screenshots/8.png)
-- ![Request Form](BLOOD%20CARE/screenshots/screenshots/9.png)
-- ![BMI Calculator](BLOOD%20CARE/screenshots/screenshots/12.png)
-- ![Other Features](BLOOD%20CARE/screenshots/screenshots/6.png)
+- ![Dashboard](BLOOD%20CARE/screenshots/screenshots/3.jpg)
+- ![Donors Nearby](BLOOD%20CARE/screenshots/screenshots/4.jpg)
+- ![Donors List](BLOOD%20CARE/screenshots/screenshots/7.jpg)
+- ![Request List](BLOOD%20CARE/screenshots/screenshots/8.jpg)
+- ![Request Form](BLOOD%20CARE/screenshots/screenshots/9.jpg)
+- ![BMI Calculator](BLOOD%20CARE/screenshots/screenshots/12.jpg)
+- ![Other Features](BLOOD%20CARE/screenshots/screenshots/6.jpg)
 
 
 ---
