@@ -65,10 +65,14 @@ BLOOD CARE/                   # 🌐 Backend root folder (Django project)
 > Add these inside a `screenshots/` folder in the repo.
 
 - ![Login]![Description](BLOOD%20CARE/screenshots/screenshots/1.png)
-
-- ![Map View](screenshots/map_view.png)
-- ![Request Blood](screenshots/request_blood.png)
-- ![BMI Calculator](screenshots/bmi.png)
+- ![signup](BLOOD%20CARE/screenshots/screenshots/2.png)
+- ![Dashboard](BLOOD%20CARE/screenshots/screenshots/3.png)
+- ![Donors Nearby](BLOOD%20CARE/screenshots/screenshots/4.png)
+- ![Donors List](BLOOD%20CARE/screenshots/screenshots/7.png)
+-  ![Request List](BLOOD%20CARE/screenshots/screenshots/8.png)
+- ![Request form](BLOOD%20CARE/screenshots/screenshots/9.png)
+- ![BMI Calculator](BLOOD%20CARE/screenshots/screenshots/12.png)
+- ![Other Featueres](BLOOD%20CARE/screenshots/screenshots/6.png)
 
 ---
 
