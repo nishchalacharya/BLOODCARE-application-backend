@@ -62,7 +62,7 @@ BLOOD CARE/                   # 🌐 Backend root folder (Django project)
 
 ## 📱 Screenshots
 
-> Add these inside a `screenshots/` folder in the repo.
+
 
 
 
@@ -72,25 +72,25 @@ BLOOD CARE/                   # 🌐 Backend root folder (Django project)
 - ![Signup](BLOOD%20CARE/screenshots/screenshots/2.png)  
   **Signup Screen:** New users can register to access the app features.
 
-- ![Dashboard](BLOOD%20CARE/screenshots/screenshots/3.png)  
+- ![Dashboard](BLOOD%20CARE/screenshots/screenshots/3.jpg)  
   **Dashboard:** Overview of user activities and quick access to main features.
 
-- ![Donors Nearby](BLOOD%20CARE/screenshots/screenshots/4.png)  
+- ![Donors Nearby](BLOOD%20CARE/screenshots/screenshots/4.jpg)  
   **Donors Nearby:** Shows nearby blood donors based on user location.
 
-- ![Donors List](BLOOD%20CARE/screenshots/screenshots/7.png)  
+- ![Donors List](BLOOD%20CARE/screenshots/screenshots/7.jpg)  
   **Donors List:** A detailed list of blood donors filtered by blood group and city.
 
-- ![Request List](BLOOD%20CARE/screenshots/screenshots/8.png)  
+- ![Request List](BLOOD%20CARE/screenshots/screenshots/8.jpg)  
   **Request List:** Displays blood requests made by users in the community.
 
-- ![Request Form](BLOOD%20CARE/screenshots/screenshots/9.png)  
+- ![Request Form](BLOOD%20CARE/screenshots/screenshots/9.jpg)  
   **Request Form:** Allows users to submit a request for blood donation.
 
-- ![BMI Calculator](BLOOD%20CARE/screenshots/screenshots/12.png)  
+- ![BMI Calculator](BLOOD%20CARE/screenshots/screenshots/12.jpg)  
   **BMI Calculator:** Calculates and displays Body Mass Index for health monitoring.
 
-- ![Other Features](BLOOD%20CARE/screenshots/screenshots/6.png)  
+- ![Other Features](BLOOD%20CARE/screenshots/screenshots/6.jpg)  
   **Additional Features:** Various other helpful utilities integrated into the app.
 
 ---
