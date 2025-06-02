@@ -1,6 +1,6 @@
 # 🩸 BLOOD CARE – Full Stack Blood Donation App (Flutter + Django REST)
 
-BLOOD CARE is a user-friendly mobile application that enables real-time blood request and donation services. Built with **Flutter** for the frontend and **Django REST Framework** for the backend, it connects blood donors and patients efficiently with geolocation features, blood group/city filtering, and helpful health tools like BMI calculation.
+BLOOD CARE is a user-friendly mobile application that enables real-time blood request and donation services. Built with **Flutter** for the frontend and **Django REST Framework** for the backend, it connects blood donors and patients efficiently with geolocation features, blood group/city filtering, and helpful health tools like BMI calculation and many other features.
 
 ---
 
@@ -33,7 +33,7 @@ BLOODCARE-application/
 - 📍 **Search Donors** by city and blood group
 - 🗺️ **Google Maps Integration** for location-based donor lookup
 - 📊 **BMI Calculator** integrated for health tracking
-- 🧾 **Registration/Login** system for both donors and hospitals
+- 🧾 **Registration/Login** system for both donors and receivers
 - 🔔 User-friendly UI for seamless interaction
 
 ### ⚙️ Backend Features (Django REST)
